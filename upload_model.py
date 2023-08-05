@@ -27,7 +27,7 @@ def save_model_card(
         image_grid.save(os.path.join(repo_folder, "val_imgs_grid.png"))
         img_str += "![val_imgs_grid](./val_imgs_grid.png)\n"
 
-    yaml = f"""
+    yaml = """
 ---
 license: creativeml-openrail-m
 base_model: SG161222/Realistic_Vision_V4.0
@@ -85,8 +85,7 @@ repo_id = create_repo(
                 repo_id="BKSDM-Base-5", exist_ok=True, token="token"
             ).repo_id
 prompts = ["Portrait of a pretty girl", "photo of super car, natural lighting, 8k uhd, high quality, film grain, Fujifilm XT3"]
-images = []
-images.append(Image.open("civit/45K_girl_2.png"))
+images = [Image.open("civit/45K_girl_2.png")]
 images.append(Image.open("civit/45K_car_1.png"))
 save_model_card(prompts, repo_id, images=images, repo_folder="5K")
 upload_folder(
